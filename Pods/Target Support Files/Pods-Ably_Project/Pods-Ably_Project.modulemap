@@ -1,0 +1,6 @@
+framework module Pods_Ably_Project {
+  umbrella header "Pods-Ably_Project-umbrella.h"
+
+  export *
+  module * { export * }
+}
