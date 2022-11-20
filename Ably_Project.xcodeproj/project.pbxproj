@@ -3,27 +3,57 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F700B9F0873CD3330BE4161 /* Pods_Ably_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD504BB20F87F03DF155553B /* Pods_Ably_Project.framework */; };
+		B63AE2A529293CAB0081C5F3 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63AE2A429293CAB0081C5F3 /* Banner.swift */; };
+		B63AE2A729293D530081C5F3 /* HomeBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63AE2A629293D530081C5F3 /* HomeBannerCell.swift */; };
+		B63C9C9A292A01930037AFF9 /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C9C99292A01930037AFF9 /* LikeViewController.swift */; };
+		B63C9C9D292A09E40037AFF9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C9C9C292A09E40037AFF9 /* MainViewController.swift */; };
+		B63C9C9F292A09EB0037AFF9 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C9C9E292A09EB0037AFF9 /* MainViewModel.swift */; };
 		B642E16C29291816007729A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642E16B29291816007729A2 /* AppDelegate.swift */; };
 		B642E16E29291816007729A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642E16D29291816007729A2 /* SceneDelegate.swift */; };
-		B642E17029291816007729A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642E16F29291816007729A2 /* ViewController.swift */; };
-		B642E17329291816007729A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B642E17129291816007729A2 /* Main.storyboard */; };
 		B642E17529291817007729A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B642E17429291817007729A2 /* Assets.xcassets */; };
 		B642E17829291817007729A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B642E17629291817007729A2 /* LaunchScreen.storyboard */; };
+		B642E18229291947007729A2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642E18129291947007729A2 /* HomeViewController.swift */; };
+		B642E18429291952007729A2 /* LikeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642E18329291952007729A2 /* LikeCollectionView.swift */; };
+		B642E18729291C0B007729A2 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642E18629291C0B007729A2 /* Product.swift */; };
+		B642E18929291F89007729A2 /* LikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642E18829291F89007729A2 /* LikeCell.swift */; };
+		B696C5912929467D00B8A655 /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696C5902929467D00B8A655 /* LikeViewModel.swift */; };
+		B696C5932929468900B8A655 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696C5922929468900B8A655 /* HomeViewModel.swift */; };
+		B696C596292946C800B8A655 /* RxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696C595292946C800B8A655 /* RxViewModel.swift */; };
+		B696C59A2929CE5300B8A655 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696C5992929CE5300B8A655 /* TextViewController.swift */; };
+		B6AE811A2929F26700C799DD /* HomeBannerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE81192929F26700C799DD /* HomeBannerCollectionView.swift */; };
+		B6AE811F2929F5A500C799DD /* _LikeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AE811E2929F5A500C799DD /* _LikeCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F1FF153E03B667F95F826A6 /* Pods-Ably_Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ably_Project.debug.xcconfig"; path = "Target Support Files/Pods-Ably_Project/Pods-Ably_Project.debug.xcconfig"; sourceTree = "<group>"; };
+		7D6021BDCA85A2D1F1C12C8B /* Pods-Ably_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ably_Project.release.xcconfig"; path = "Target Support Files/Pods-Ably_Project/Pods-Ably_Project.release.xcconfig"; sourceTree = "<group>"; };
+		AD504BB20F87F03DF155553B /* Pods_Ably_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ably_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B63AE2A429293CAB0081C5F3 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		B63AE2A629293D530081C5F3 /* HomeBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerCell.swift; sourceTree = "<group>"; };
+		B63C9C99292A01930037AFF9 /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
+		B63C9C9C292A09E40037AFF9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B63C9C9E292A09EB0037AFF9 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		B642E16829291816007729A2 /* Ably_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ably_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B642E16B29291816007729A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B642E16D29291816007729A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B642E16F29291816007729A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B642E17229291816007729A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B642E17429291817007729A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B642E17729291817007729A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B642E17929291817007729A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B642E18129291947007729A2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B642E18329291952007729A2 /* LikeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCollectionView.swift; sourceTree = "<group>"; };
+		B642E18629291C0B007729A2 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		B642E18829291F89007729A2 /* LikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCell.swift; sourceTree = "<group>"; };
+		B696C5902929467D00B8A655 /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
+		B696C5922929468900B8A655 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		B696C595292946C800B8A655 /* RxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewModel.swift; sourceTree = "<group>"; };
+		B696C5992929CE5300B8A655 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		B6AE81192929F26700C799DD /* HomeBannerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerCollectionView.swift; sourceTree = "<group>"; };
+		B6AE811E2929F5A500C799DD /* _LikeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _LikeCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +61,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F700B9F0873CD3330BE4161 /* Pods_Ably_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		034EF0F2AC8F37E41AF3F043 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F1FF153E03B667F95F826A6 /* Pods-Ably_Project.debug.xcconfig */,
+				7D6021BDCA85A2D1F1C12C8B /* Pods-Ably_Project.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		42E8CD804D32B3B70615F0F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD504BB20F87F03DF155553B /* Pods_Ably_Project.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B63AE2A329293C9D0081C5F3 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				B63AE2A629293D530081C5F3 /* HomeBannerCell.swift */,
+				B6AE81192929F26700C799DD /* HomeBannerCollectionView.swift */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
+		B63C9C9B292A09BC0037AFF9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B63C9C9C292A09E40037AFF9 /* MainViewController.swift */,
+				B63C9C9E292A09EB0037AFF9 /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		B642E15F29291816007729A2 = {
 			isa = PBXGroup;
 			children = (
 				B642E16A29291816007729A2 /* Ably_Project */,
 				B642E16929291816007729A2 /* Products */,
+				034EF0F2AC8F37E41AF3F043 /* Pods */,
+				42E8CD804D32B3B70615F0F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +124,66 @@
 		B642E16A29291816007729A2 /* Ably_Project */ = {
 			isa = PBXGroup;
 			children = (
+				B63C9C9B292A09BC0037AFF9 /* Main */,
+				B6AE811B2929F35B00C799DD /* Mock */,
+				B696C594292946BE00B8A655 /* Foundation */,
+				B642E17F29291933007729A2 /* Home */,
+				B642E1802929193B007729A2 /* Like */,
+				B642E18A29293994007729A2 /* Resources */,
 				B642E16B29291816007729A2 /* AppDelegate.swift */,
 				B642E16D29291816007729A2 /* SceneDelegate.swift */,
-				B642E16F29291816007729A2 /* ViewController.swift */,
-				B642E17129291816007729A2 /* Main.storyboard */,
-				B642E17429291817007729A2 /* Assets.xcassets */,
-				B642E17629291817007729A2 /* LaunchScreen.storyboard */,
 				B642E17929291817007729A2 /* Info.plist */,
+				B696C5992929CE5300B8A655 /* TextViewController.swift */,
 			);
 			path = Ably_Project;
+			sourceTree = "<group>";
+		};
+		B642E17F29291933007729A2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B63AE2A329293C9D0081C5F3 /* Banner */,
+				B642E18129291947007729A2 /* HomeViewController.swift */,
+				B696C5922929468900B8A655 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B642E1802929193B007729A2 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				B642E18329291952007729A2 /* LikeCollectionView.swift */,
+				B642E18829291F89007729A2 /* LikeCell.swift */,
+				B696C5902929467D00B8A655 /* LikeViewModel.swift */,
+				B6AE811E2929F5A500C799DD /* _LikeCollectionView.swift */,
+				B63C9C99292A01930037AFF9 /* LikeViewController.swift */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
+		B642E18A29293994007729A2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B642E17429291817007729A2 /* Assets.xcassets */,
+				B642E17629291817007729A2 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B696C594292946BE00B8A655 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				B696C595292946C800B8A655 /* RxViewModel.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		B6AE811B2929F35B00C799DD /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				B63AE2A429293CAB0081C5F3 /* Banner.swift */,
+				B642E18629291C0B007729A2 /* Product.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +193,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B642E17C29291817007729A2 /* Build configuration list for PBXNativeTarget "Ably_Project" */;
 			buildPhases = (
+				8EDAB61F63ECC638E24F35A7 /* [CP] Check Pods Manifest.lock */,
 				B642E16429291816007729A2 /* Sources */,
 				B642E16529291816007729A2 /* Frameworks */,
 				B642E16629291816007729A2 /* Resources */,
+				3B76FA68B50F6E54D1DFA739 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -103,7 +224,7 @@
 				};
 			};
 			buildConfigurationList = B642E16329291816007729A2 /* Build configuration list for PBXProject "Ably_Project" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -127,34 +248,81 @@
 			files = (
 				B642E17829291817007729A2 /* LaunchScreen.storyboard in Resources */,
 				B642E17529291817007729A2 /* Assets.xcassets in Resources */,
-				B642E17329291816007729A2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3B76FA68B50F6E54D1DFA739 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ably_Project/Pods-Ably_Project-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ably_Project/Pods-Ably_Project-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ably_Project/Pods-Ably_Project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EDAB61F63ECC638E24F35A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ably_Project-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B642E16429291816007729A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B642E17029291816007729A2 /* ViewController.swift in Sources */,
+				B642E18929291F89007729A2 /* LikeCell.swift in Sources */,
+				B696C5932929468900B8A655 /* HomeViewModel.swift in Sources */,
+				B63AE2A729293D530081C5F3 /* HomeBannerCell.swift in Sources */,
+				B696C59A2929CE5300B8A655 /* TextViewController.swift in Sources */,
 				B642E16C29291816007729A2 /* AppDelegate.swift in Sources */,
 				B642E16E29291816007729A2 /* SceneDelegate.swift in Sources */,
+				B63C9C9D292A09E40037AFF9 /* MainViewController.swift in Sources */,
+				B63C9C9A292A01930037AFF9 /* LikeViewController.swift in Sources */,
+				B6AE811A2929F26700C799DD /* HomeBannerCollectionView.swift in Sources */,
+				B642E18229291947007729A2 /* HomeViewController.swift in Sources */,
+				B63AE2A529293CAB0081C5F3 /* Banner.swift in Sources */,
+				B642E18729291C0B007729A2 /* Product.swift in Sources */,
+				B642E18429291952007729A2 /* LikeCollectionView.swift in Sources */,
+				B696C596292946C800B8A655 /* RxViewModel.swift in Sources */,
+				B696C5912929467D00B8A655 /* LikeViewModel.swift in Sources */,
+				B6AE811F2929F5A500C799DD /* _LikeCollectionView.swift in Sources */,
+				B63C9C9F292A09EB0037AFF9 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B642E17129291816007729A2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B642E17229291816007729A2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B642E17629291817007729A2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +438,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -282,6 +450,7 @@
 		};
 		B642E17D29291817007729A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F1FF153E03B667F95F826A6 /* Pods-Ably_Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -292,9 +461,10 @@
 				INFOPLIST_FILE = Ably_Project/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,14 +472,18 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.geonhee.Ably-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		B642E17E29291817007729A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D6021BDCA85A2D1F1C12C8B /* Pods-Ably_Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -320,9 +494,10 @@
 				INFOPLIST_FILE = Ably_Project/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +505,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.geonhee.Ably-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
