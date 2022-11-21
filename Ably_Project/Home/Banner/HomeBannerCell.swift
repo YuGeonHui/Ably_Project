@@ -10,9 +10,13 @@ import SnapKit
 import Then
 import Kingfisher
 import SwiftRichString
+import RxRelay
+import RxSwift
+import RxCocoa
 
 final class HomeBannerCell: UICollectionViewCell {
     
+    let disposeBag = DisposeBag()
     static let identifier = "HomeBannerCell"
     
     private enum Styles {
@@ -25,7 +29,7 @@ final class HomeBannerCell: UICollectionViewCell {
     private lazy var imageView = UIImageView().then {
         $0.contentMode = .scaleToFill
     }
-    private lazy var stateLabel = UILabel()
+    lazy var stateLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,6 +42,8 @@ final class HomeBannerCell: UICollectionViewCell {
     }
     
     private func settingCell() {
+        
+        self.backgroundColor = .cyan
         
         self.addSubview(self.imageView)
         imageView.addSubview(self.stateLabel)
@@ -62,5 +68,22 @@ final class HomeBannerCell: UICollectionViewCell {
         imageView.kf.setImage(with: url)
         
         stateLabel.attributedText = "\(info.id)".set(style: Styles.state)
+    }
+    
+    let uploadImageURL = PublishRelay<String>()
+    let uploadState = PublishRelay<String>()
+    
+    private func bindView() {
+        
+        self.uploadImageURL
+            .map { URL(string: $0) }
+            .withUnretained(self)
+            .bind(onNext: { $0.0.imageView.kf.setImage(with: $0.1) })
+            .disposed(by: self.disposeBag)
+        
+        self.uploadState
+            .withUnretained(self)
+            .bind(onNext: { $0.0.stateLabel.text = $0.1 })
+            .disposed(by: self.disposeBag)
     }
 }

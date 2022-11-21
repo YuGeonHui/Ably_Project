@@ -20,7 +20,8 @@ enum Main {
             case .home:
                 return HomeViewController()
             case .like:
-                return LikeViewController()
+                return HomeViewController()
+//                return LikeViewController()
             }
         }
         
@@ -42,7 +43,7 @@ enum Main {
             }
         }
         
-        var title: String {
+        var title: String? {
             switch self {
             case .home:
                 return "홈"

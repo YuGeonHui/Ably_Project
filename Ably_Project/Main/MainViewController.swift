@@ -16,11 +16,16 @@ final class MainViewController: UITabBarController {
         let homeTab = UINavigationController(rootViewController: HomeViewController())
         let likeTab = UINavigationController(rootViewController: LikeViewController())
         
-        homeTab.title = "홈"
-        likeTab.title = "좋아요"
+        homeTab.title = Main.TabItem.home.title
+        likeTab.title = Main.TabItem.like.title
        
-        homeTab.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
-        likeTab.tabBarItem = UITabBarItem(title: "좋아요", image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
+        homeTab.tabBarItem = UITabBarItem(title: Main.TabItem.home.title,
+                                          image: Main.TabItem.home.iconOn,
+                                          selectedImage: Main.TabItem.home.iconOff)
+        
+        likeTab.tabBarItem = UITabBarItem(title: Main.TabItem.like.title,
+                                          image: Main.TabItem.like.iconOn,
+                                          selectedImage: Main.TabItem.like.iconOff)
         
         self.setViewControllers([homeTab, likeTab], animated: false)
         self.tabBar.tintColor = .red

@@ -9,25 +9,26 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import RxRelay
 import SnapKit
 
 final class HomeBannerCollectionView: UICollectionView {
-    
+
     static let id = "HomeBannerCollectionView"
-    
+
     let bannerInfos: [Banner] = Banner.list
-    
+
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         super.init(frame: .zero, collectionViewLayout: layout)
         setupView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupView() {
         showsHorizontalScrollIndicator = false
         register(HomeBannerCell.self, forCellWithReuseIdentifier: HomeBannerCell.identifier)
@@ -37,16 +38,29 @@ final class HomeBannerCollectionView: UICollectionView {
 }
 
 extension HomeBannerCollectionView: UICollectionViewDataSource {
-    
+
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bannerInfos.count
     }
-    
+
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeBannerCell.identifier, for: indexPath) as? HomeBannerCell else {
             return UICollectionViewCell()
         }
-        
+
+//        let bannerVM = self.viewModel.bannerAt(indexPath.row)
+//
+//        bannerVM.imageURL
+//            .withUnretained(self)
+//            .bind(onNext: { cell.uploadImageURL.accept($0.1) })
+//            .disposed(by: self.disposeBag)
+//
+//        bannerVM.id
+//            .withUnretained(self)
+//            .bind(onNext: { cell.uploadState.accept($0.1) })
+//            .disposed(by: self.disposeBag)
+
         let item = bannerInfos[indexPath.item]
         cell.configure(item)
         return cell
@@ -54,8 +68,8 @@ extension HomeBannerCollectionView: UICollectionViewDataSource {
 }
 
 extension HomeBannerCollectionView: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Constants.photosCellWidth, height: Constants.photosCellHeight)
+        return CGSize(width: Constants.photosCellWidth, height: 300)
     }
 }

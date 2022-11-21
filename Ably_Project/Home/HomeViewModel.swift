@@ -9,23 +9,49 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct HomeBannerViewInfo {
+struct HomeViewModel {
     
-    var bannerImageURL: String?
-    var bannerId: Int?
-    var bannerTotalCnt: Int?
+    let bannerViewModel: [HomeBannerViewModel]
+    
+    init() {
+        self.bannerViewModel = []
+    }
+    
+    init(_ banners: [Banner]) {
+        
+        self.bannerViewModel = banners.compactMap(HomeBannerViewModel.init)
+    }
 }
 
-protocol HomeViewModelInputs {
+extension HomeViewModel {
     
-    func reload()
-    func tappedHeart()
+    func bannerAt(_ index: Int) -> HomeBannerViewModel {
+        return self.bannerViewModel[index]
+    }
 }
 
-protocol HomeViewModelOutputs {
+class HomeBannerViewModel  {
     
+    let banner: Banner
+    
+    init(_ banner: Banner) {
+        self.banner = banner
+    }
+    
+    private let _fetch = PublishRelay<Void>()
+    func fetch() {
+        self._fetch.accept(())
+    }
 }
 
-//final class HomeViewModel: RxViewModel,  {
-//    
-//}
+extension HomeBannerViewModel {
+    
+    var imageURL: Observable<String> {
+        return Observable<String>.just(banner.imageURL)
+    }
+    
+    var id: Observable<String> {
+        return Observable<Int>.just(banner.id).map { "\($0)" }
+    }
+}
+

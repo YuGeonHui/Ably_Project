@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController {
     
     enum Section {
         case banner
+        case product
     }
     
     typealias Item = Banner

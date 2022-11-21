@@ -66,8 +66,6 @@ final class LikeCell: UICollectionViewCell {
     
     private func settingViews() {
         
-        self.backgroundColor = .red
-        
         self.addSubview(self.imageView)
         
         self.addSubview(self.saleLabel)
@@ -76,10 +74,6 @@ final class LikeCell: UICollectionViewCell {
         
         self.addSubview(self.newBadgeLabel)
         self.addSubview(self.sellCntLabel)
-        
-        snp.makeConstraints { make in
-            make.width.equalTo(Constants.width)
-        }
         
         imageView.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(20)
@@ -114,7 +108,7 @@ final class LikeCell: UICollectionViewCell {
         
         let saleRatio = info.actualPrice * 100 / info.price
         
-        let url = URL(string: info.iamgeURL)
+        let url = URL(string: info.imageURL)
         imageView.kf.setImage(with: url)
         
         self.saleLabel.attributedText = "\(saleRatio)%".set(style: Styles.sale)
