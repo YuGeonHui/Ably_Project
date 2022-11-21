@@ -47,12 +47,13 @@ final class LikeCell: UICollectionViewCell {
     }
     
     private lazy var saleLabel = UILabel()
-    private lazy var nameLabel = UILabel().then {
-        $0.numberOfLines = 0
-    }
+    private lazy var nameLabel = UILabel().then { $0.numberOfLines = 0 }
     private lazy var priceLabel = UILabel()
     private lazy var newBadgeLabel = UILabel()
     private lazy var sellCntLabel = UILabel()
+    private lazy var heartIconView = UIImageView().then {
+        $0.image = UIImage(systemName: "heart")
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,6 +68,7 @@ final class LikeCell: UICollectionViewCell {
     private func settingViews() {
         
         self.addSubview(self.imageView)
+        self.imageView.addSubview(self.heartIconView)
         
         self.addSubview(self.saleLabel)
         self.addSubview(self.nameLabel)
@@ -79,6 +81,10 @@ final class LikeCell: UICollectionViewCell {
             make.top.leading.equalToSuperview().inset(20)
             make.width.equalTo(60)
             make.height.equalTo(60)
+        }
+        
+        heartIconView.snp.makeConstraints { make in
+            make.top.trailing.equalToSuperview().inset(5)
         }
         
         saleLabel.snp.makeConstraints { make in

@@ -20,8 +20,7 @@ enum Main {
             case .home:
                 return HomeViewController()
             case .like:
-                return HomeViewController()
-//                return LikeViewController()
+                return LikeViewController()
             }
         }
         
