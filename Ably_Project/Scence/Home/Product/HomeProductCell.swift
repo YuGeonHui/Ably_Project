@@ -1,5 +1,5 @@
 //
-//  LikeCell.swift
+//  HomeProductCell.swift
 //  Ably_Project
 //
 //  Created by geonhui Yu on 2022/11/19.
@@ -14,14 +14,13 @@ import SwiftRichString
 import RxSwift
 import RxCocoa
 
-final class LikeCell: UICollectionViewCell {
+final class HomeProductCell: UICollectionViewCell {
     
-    static let identifier = "LikeCell"
+    static let identifier = "HomeProductCell"
     
     private enum Metric {
         
         static let imageRadius: CGFloat = 5
-        
         static let imageSize: CGSize = CGSize(width: 60, height: 60)
     }
     
@@ -42,6 +41,12 @@ final class LikeCell: UICollectionViewCell {
             $0.color = UIColor.x777777
         }
     }
+    
+    // MARK: Inputs
+//    private let _updatePrdouctList = PublishRelay<[Product]>()
+//    func update(products: [Product]) {
+//        self._updatePrdouctList.accept(products)
+//    }
     
     fileprivate lazy var imageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
@@ -140,7 +145,7 @@ final class LikeCell: UICollectionViewCell {
     }
 }
 
-extension Reactive where Base: LikeCell {
+extension Reactive where Base: HomeProductCell {
 
 //    var heartTap: ControlEvent<Void> {
 //

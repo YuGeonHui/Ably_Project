@@ -9,20 +9,41 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct HomeViewModel {
+class HomeViewModel: RxViewModel {
     
     let bannerViewModel: [HomeBannerViewModel]
-    let productViewModel: [HomeProductViewModel]
+//    let productViewModel: [HomeProductViewModel]
     
     init(_ banners: [Banner], products: [Product]) {
         
         self.bannerViewModel = banners.compactMap(HomeBannerViewModel.init)
-        self.productViewModel = products.compactMap(HomeProductViewModel.init)
+//        self.productViewModel = products.compactMap(HomeProductViewModel.init)
     }
     
     private let _fetch = PublishRelay<Void>()
     func fetch() {
         self._fetch.accept(())
+    }
+    
+    override func bind() {
+        
+        _fetch
+            .withUnretained(self)
+            .bind(onNext: { $0.0.getFetchInfo() })
+            .disposed(by: self.disposeBag)
+    }
+    
+    private func getFetchInfo() {
+        
+        let resource = Resource<HomeResponse>(url: URL(string: "https://d2bab9i9pr8lds.cloudfront.net/api/home")!)
+        
+        URLRequest.load(resource: resource)
+            .subscribe(onNext: { response in
+                
+                let banners = response.banners
+                let products = response.products
+                                
+            }).disposed(by: disposeBag)
     }
 }
 
@@ -33,38 +54,3 @@ extension HomeViewModel {
     }
 }
 
-// MARK: Banner ViewModel
-class HomeBannerViewModel  {
-    
-    let banner: Banner
-    
-    init(_ banner: Banner) {
-        self.banner = banner
-    }
-}
-
-extension HomeBannerViewModel {
-    
-    var imageURL: Observable<String> {
-        return Observable<String>.just(banner.imageURL)
-    }
-    
-    var id: Observable<String> {
-        return Observable<Int>.just(banner.id).map { "\($0)" }
-    }
-}
-
-// MARK: Product ViewModel
-class HomeProductViewModel {
-    
-    let product: Product
-    
-    init(_ product: Product) {
-        self.product = product
-    }
-}
-
-extension HomeProductViewModel {
-    
-    
-}

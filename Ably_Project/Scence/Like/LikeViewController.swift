@@ -11,5 +11,4 @@ import RxSwift
 
 final class LikeViewController: UIViewController {
     
-    
 }

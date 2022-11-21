@@ -44,7 +44,7 @@ final class HomeViewController: UIViewController {
         view.clipsToBounds = true
         
         view.register(HomeBannerCell.self, forCellWithReuseIdentifier: "HomeBannerCell")
-        view.register(LikeCell.self, forCellWithReuseIdentifier: "LikeCell")
+        view.register(HomeProductCell.self, forCellWithReuseIdentifier: "HomeProductCell")
        
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -114,7 +114,7 @@ final class HomeViewController: UIViewController {
         }
         
         self.collectionView.dataSource = self
-        self.getFetchInfo()
+        self.viewModel.fetch()
     }
 }
 
@@ -123,7 +123,6 @@ extension HomeViewController {
     private func getFetchInfo() {
         
         let resource = Resource<HomeResponse>(url: URL(string: "https://d2bab9i9pr8lds.cloudfront.net/api/home")!)
-        
         
         URLRequest.load(resource: resource)
             .subscribe(onNext: { response in
@@ -165,19 +164,10 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let bannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeBannerCell", for: indexPath) as! HomeBannerCell
-        let productCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LikeCell", for: indexPath) as! LikeCell
+        let productCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeProductCell", for: indexPath) as! HomeProductCell
         
         switch self.dataSource[indexPath.section] {
         case let .first(items):
-            
-            debugPrint("items: \(items)")
-            
-//            let bannerViewModel = self.viewModel.bannerAt(indexPath.row)
-//
-//            bannerViewModel.imageURL
-//                .withUnretained(self)
-//                .bind(onNext: { bannerCell.uploadImageURL.accept($0.1) })
-//                .disposed(by: self.disposeBag)
             
             bannerCell.configure(items[indexPath.item])
             return bannerCell
