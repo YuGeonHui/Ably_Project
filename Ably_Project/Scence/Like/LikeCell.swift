@@ -11,36 +11,39 @@ import SnapKit
 import Then
 import Kingfisher
 import SwiftRichString
+import RxSwift
+import RxCocoa
 
 final class LikeCell: UICollectionViewCell {
     
     static let identifier = "LikeCell"
     
+    private enum Metric {
+        
+        static let imageRadius: CGFloat = 5
+        
+        static let imageSize: CGSize = CGSize(width: 60, height: 60)
+    }
+    
     private enum Styles {
         
         static let primary: Style = Style {
-            $0.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+            $0.font = UIFont.bold18
             $0.color = UIColor.black
         }
         
-        static let secondary: Style = Style {
-            $0.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-            $0.color = Color.secondary
-        }
-        
         static let sale: Style = Style {
-            $0.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-            $0.color = Color.sale
+            $0.font = UIFont.bold18
+            $0.color = UIColor.xec5e65
+        }
+        
+        static let secondary: Style = Style {
+            $0.font = UIFont.regular13
+            $0.color = UIColor.x777777
         }
     }
     
-    private enum Color {
-        
-        static let sale: UIColor = UIColor(red: 236.0 / 255.0, green: 94.0 / 255.0, blue: 101.0 / 255.0, alpha: 1.0)
-        static let secondary: UIColor = UIColor(red: 119.0 / 255.0, green: 119.0 / 255.0, blue: 119.0 / 255.0, alpha: 1.0)
-    }
-    
-    private lazy var imageView = UIImageView().then {
+    fileprivate lazy var imageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 5
@@ -53,6 +56,10 @@ final class LikeCell: UICollectionViewCell {
     private lazy var sellCntLabel = UILabel()
     private lazy var heartIconView = UIImageView().then {
         $0.image = UIImage(systemName: "heart")
+        $0.tintColor = .white
+    }
+    private lazy var dividerView = UIView().then {
+        $0.backgroundColor = .systemGray6
     }
     
     override init(frame: CGRect) {
@@ -76,6 +83,7 @@ final class LikeCell: UICollectionViewCell {
         
         self.addSubview(self.newBadgeLabel)
         self.addSubview(self.sellCntLabel)
+        self.addSubview(self.dividerView)
         
         imageView.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(20)
@@ -108,11 +116,18 @@ final class LikeCell: UICollectionViewCell {
             make.top.equalTo(nameLabel.snp.bottom).offset(15)
             make.bottom.equalToSuperview().inset(20)
         }
+        
+        dividerView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(1)
+            make.top.equalTo(sellCntLabel.snp.bottom).offset(20)
+        }
     }
     
     func configure(_ info: Product) {
         
-        let saleRatio = info.actualPrice * 100 / info.price
+        let saleRatio = info.price * 100 / info.actualPrice
         
         let url = URL(string: info.imageURL)
         imageView.kf.setImage(with: url)
@@ -124,3 +139,14 @@ final class LikeCell: UICollectionViewCell {
         self.sellCntLabel.attributedText = "\(info.sellCnt)개 구매중".set(style: Styles.secondary)
     }
 }
+
+extension Reactive where Base: LikeCell {
+
+//    var heartTap: ControlEvent<Void> {
+//
+//        let source = base
+//
+//        return ControlEvent(events: source)
+//    }
+}
+

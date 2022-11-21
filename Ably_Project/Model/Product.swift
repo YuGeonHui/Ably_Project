@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HomeResponse {
+struct HomeResponse: Codable {
     
     let banners: [Banner]
     let products: [Product]
@@ -21,7 +21,7 @@ extension HomeResponse {
     }
 }
 
-struct Product: Hashable {
+struct Product: Codable {
     
     let id: Int // 상품 ID
     let name: String // 상품 이름
@@ -39,7 +39,7 @@ extension Product {
     enum CodingKeys: String, CodingKey {
         case id
         case name
-        case iamgeURL = "image"
+        case imageURL = "image"
         case actualPrice = "actual_price"
         case price
         case isNew = "is_new"

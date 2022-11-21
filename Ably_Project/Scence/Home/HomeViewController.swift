@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  Ably_Project
 //
 //  Created by geonhui Yu on 2022/11/20.
@@ -16,7 +16,14 @@ enum MySection {
     case second([Product])
 }
 
+//enum MySection {
+//    case first([HomeBannerViewModel])
+//    case second([HomeProductViewModel])
+//}
+
 final class HomeViewController: UIViewController {
+    
+    let disposeBag = DisposeBag()
     
     let bannerInfos: [Banner] = Banner.list
     let productInfo: [Product] = Product.list
@@ -43,9 +50,9 @@ final class HomeViewController: UIViewController {
         return view
     }()
     
-    private let dataSource: [MySection] = [
-        .first(Banner.list), .second(Product.list)
-    ]
+    private var viewModel: HomeViewModel!
+  
+    private let dataSource: [MySection] = [.first(Banner.list), .second(Product.list)]
     
     static func getLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
@@ -107,12 +114,42 @@ final class HomeViewController: UIViewController {
         }
         
         self.collectionView.dataSource = self
+        self.getFetchInfo()
     }
 }
 
+extension HomeViewController {
+    
+    private func getFetchInfo() {
+        
+        let resource = Resource<HomeResponse>(url: URL(string: "https://d2bab9i9pr8lds.cloudfront.net/api/home")!)
+        
+        
+        URLRequest.load(resource: resource)
+            .subscribe(onNext: { response in
+                
+                let banners = response.banners
+                let products = response.products
+                self.viewModel = HomeViewModel(banners, products: products)
+                
+                debugPrint("12312: \(banners)")
+                debugPrint("12312: \(products)")
+                
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
+                
+            }).disposed(by: disposeBag)
+    }
+}
+
+// MARK: Delegate
 extension HomeViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+//        return self.viewModel.bannerViewModel.count
+        
         return self.dataSource.count
     }
     
@@ -133,6 +170,15 @@ extension HomeViewController: UICollectionViewDataSource {
         switch self.dataSource[indexPath.section] {
         case let .first(items):
             
+            debugPrint("items: \(items)")
+            
+//            let bannerViewModel = self.viewModel.bannerAt(indexPath.row)
+//
+//            bannerViewModel.imageURL
+//                .withUnretained(self)
+//                .bind(onNext: { bannerCell.uploadImageURL.accept($0.1) })
+//                .disposed(by: self.disposeBag)
+            
             bannerCell.configure(items[indexPath.item])
             return bannerCell
             
@@ -143,3 +189,15 @@ extension HomeViewController: UICollectionViewDataSource {
         }
     }
 }
+
+// let bannerVM = self.viewModel.bannerAt(indexPath.row)
+//
+//        bannerVM.imageURL
+//            .withUnretained(self)
+//            .bind(onNext: { cell.uploadImageURL.accept($0.1) })
+//            .disposed(by: self.disposeBag)
+//
+//        bannerVM.id
+//            .withUnretained(self)
+//            .bind(onNext: { cell.uploadState.accept($0.1) })
+//            .disposed(by: self.disposeBag)

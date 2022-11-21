@@ -21,7 +21,7 @@ final class HomeBannerCell: UICollectionViewCell {
     
     private enum Styles {
         static let state: Style = Style {
-            $0.font = UIFont.systemFont(ofSize: 8, weight: .regular)
+            $0.font = UIFont.systemFont(ofSize: 12, weight: .bold)
             $0.color = UIColor.white
         }
     }
@@ -29,7 +29,11 @@ final class HomeBannerCell: UICollectionViewCell {
     private lazy var imageView = UIImageView().then {
         $0.contentMode = .scaleToFill
     }
-    lazy var stateLabel = UILabel()
+    lazy var stateLabel = UILabel().then {
+        $0.layer.cornerRadius = 4
+        $0.clipsToBounds = true
+        $0.backgroundColor = .gray
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,8 +46,6 @@ final class HomeBannerCell: UICollectionViewCell {
     }
     
     private func settingCell() {
-        
-        self.backgroundColor = .cyan
         
         self.addSubview(self.imageView)
         imageView.addSubview(self.stateLabel)
@@ -58,7 +60,7 @@ final class HomeBannerCell: UICollectionViewCell {
         }
         
         stateLabel.snp.makeConstraints { make in
-            make.bottom.right.equalToSuperview().inset(10)
+            make.bottom.right.equalToSuperview().inset(20)
         }
     }
         
@@ -67,7 +69,7 @@ final class HomeBannerCell: UICollectionViewCell {
         guard let url = URL(string: info.imageURL) else { return }
         imageView.kf.setImage(with: url)
         
-        stateLabel.attributedText = "\(info.id)".set(style: Styles.state)
+        stateLabel.attributedText = "\(info.id) / 3".set(style: Styles.state)
     }
     
     let uploadImageURL = PublishRelay<String>()

@@ -12,14 +12,17 @@ import RxCocoa
 struct HomeViewModel {
     
     let bannerViewModel: [HomeBannerViewModel]
+    let productViewModel: [HomeProductViewModel]
     
-    init() {
-        self.bannerViewModel = []
-    }
-    
-    init(_ banners: [Banner]) {
+    init(_ banners: [Banner], products: [Product]) {
         
         self.bannerViewModel = banners.compactMap(HomeBannerViewModel.init)
+        self.productViewModel = products.compactMap(HomeProductViewModel.init)
+    }
+    
+    private let _fetch = PublishRelay<Void>()
+    func fetch() {
+        self._fetch.accept(())
     }
 }
 
@@ -30,17 +33,13 @@ extension HomeViewModel {
     }
 }
 
+// MARK: Banner ViewModel
 class HomeBannerViewModel  {
     
     let banner: Banner
     
     init(_ banner: Banner) {
         self.banner = banner
-    }
-    
-    private let _fetch = PublishRelay<Void>()
-    func fetch() {
-        self._fetch.accept(())
     }
 }
 
@@ -55,3 +54,17 @@ extension HomeBannerViewModel {
     }
 }
 
+// MARK: Product ViewModel
+class HomeProductViewModel {
+    
+    let product: Product
+    
+    init(_ product: Product) {
+        self.product = product
+    }
+}
+
+extension HomeProductViewModel {
+    
+    
+}
