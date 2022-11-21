@@ -11,15 +11,15 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-enum MySection {
+//enum MySection {
+//    case first([Banner])
+//    case second([Product])
+//}
+
+fileprivate enum Section {
     case first([Banner])
     case second([Product])
 }
-
-//enum MySection {
-//    case first([HomeBannerViewModel])
-//    case second([HomeProductViewModel])
-//}
 
 final class HomeViewController: UIViewController {
     
@@ -52,7 +52,9 @@ final class HomeViewController: UIViewController {
     
     private var viewModel: HomeViewModel!
   
-    private let dataSource: [MySection] = [.first(Banner.list), .second(Product.list)]
+//    private let dataSource: [MySection] = [.first(Banner.list), .second(Product.list)]
+
+    fileprivate var dataSource: [Section] = [.first(Banner.list), .second(Product.list)]
     
     static func getLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
@@ -114,7 +116,7 @@ final class HomeViewController: UIViewController {
         }
         
         self.collectionView.dataSource = self
-        self.viewModel.fetch()
+        self.getFetchInfo()
     }
 }
 
@@ -127,16 +129,18 @@ extension HomeViewController {
         URLRequest.load(resource: resource)
             .subscribe(onNext: { response in
                 
-                let banners = response.banners
-                let products = response.products
-                self.viewModel = HomeViewModel(banners, products: products)
+                self.dataSource = [.first(response.banners), .second(response.products)]
                 
-                debugPrint("12312: \(banners)")
-                debugPrint("12312: \(products)")
+//                let banners = response.banners
+//                let products = response.products
+//                self.viewModel = HomeViewModel(banners, products: products)
+//
+//                debugPrint("12312: \(banners)")
+//                debugPrint("12312: \(products)")
                 
-//                DispatchQueue.main.async {
-//                    self.collectionView.reloadData()
-//                }
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
                 
             }).disposed(by: disposeBag)
     }
@@ -146,8 +150,6 @@ extension HomeViewController {
 extension HomeViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
-//        return self.viewModel.bannerViewModel.count
         
         return self.dataSource.count
     }
