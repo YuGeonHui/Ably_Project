@@ -42,16 +42,10 @@ final class HomeProductCell: UICollectionViewCell {
         }
     }
     
-    // MARK: Inputs
-//    private let _updatePrdouctList = PublishRelay<[Product]>()
-//    func update(products: [Product]) {
-//        self._updatePrdouctList.accept(products)
-//    }
-    
     fileprivate lazy var imageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
         $0.clipsToBounds = true
-        $0.layer.cornerRadius = 5
+        $0.layer.cornerRadius = Metric.imageRadius
     }
     
     private lazy var saleLabel = UILabel()
@@ -135,7 +129,7 @@ final class HomeProductCell: UICollectionViewCell {
         let saleRatio = info.price * 100 / info.actualPrice
         
         let url = URL(string: info.imageURL)
-        imageView.kf.setImage(with: url)
+        self.imageView.kf.setImage(with: url)
         
         self.saleLabel.attributedText = "\(saleRatio)%".set(style: Styles.sale)
         self.nameLabel.attributedText = info.name.set(style: Styles.secondary)

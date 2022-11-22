@@ -7,10 +7,10 @@
 
 import Foundation
 
-fileprivate enum HomeAPI {
+enum HomeAPI {
     
     case initialization
-    case pagination(String)
+    case pagination(Int)
     
     var url: String {
         
@@ -18,7 +18,7 @@ fileprivate enum HomeAPI {
         case .initialization:
             return "https://d2bab9i9pr8lds.cloudfront.net/api/home"
         case .pagination(let lastProductId):
-            return "http://d2bab9i9pr8lds.cloudfront.net/api/home/goods?lastId=\(lastProductId)"
+            return "https://d2bab9i9pr8lds.cloudfront.net/api/home/goods?lastId=\(lastProductId)"
         }
     }
 }

@@ -16,7 +16,7 @@ fileprivate enum Section {
     case product([HomeProductViewInfo])
 }
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController, UICollectionViewDelegate {
     
     let disposeBag = DisposeBag()
     
@@ -43,22 +43,28 @@ final class HomeViewController: UIViewController {
     
     // MARK: ViewModel
     private var viewModel = HomeViewModel()
-    
     fileprivate var dataSource: [Section]!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.view.addSubview(self.collectionView)
         self.title = Main.TabItem.home.title
+    
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        
+        self.settingView()
+        self.bindView()
+    }
+    
+    private func settingView() {
+        
+        self.view.addSubview(self.collectionView)
         
         self.collectionView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide)
             make.leading.trailing.bottom.equalToSuperview()
         }
-        
-        self.collectionView.dataSource = self
-        self.bindView()
     }
     
     private func bindView() {
@@ -78,6 +84,12 @@ final class HomeViewController: UIViewController {
             .withUnretained(self)
             .bind(onNext: { $0.updateView(with: $1) })
             .disposed(by: self.disposeBag)
+        
+        outputs.addProdcutInfoChanged
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind(onNext: { $0.addProductView(with: $1) })
+            .disposed(by: self.disposeBag)
     }
 }
 
@@ -94,6 +106,10 @@ fileprivate extension HomeViewController {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
+    }
+    
+    private func addProductView(with viewInfo: HomeProductViewInfo) {
+        
     }
 }
 
@@ -149,7 +165,7 @@ extension HomeViewController {
     }
 }
 
-// MARK: Extensions of Delegate
+// MARK: Extensions of Delegate with Data
 extension HomeViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -173,14 +189,36 @@ extension HomeViewController: UICollectionViewDataSource {
         
         switch self.dataSource[indexPath.section] {
         case let .banner(items):
-            
-            bannerCell.configure(items[indexPath.item])
+
+            bannerCell.configure(items[indexPath.item], totalCount: items.count)
             return bannerCell
             
         case let .product(items):
 
             productCell.configure(items[indexPath.item])
             return productCell
+        }
+    }
+}
+
+// MARK: Extensions of Delegate with Scroll
+extension HomeViewController: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+//        let contentOffset_y = scrollView.contentOffset.y
+//        let tableViewContentSize = self.collectionView.contentSize.height
+//        let pagination_y = tableViewContentSize * 0.2
+//
+//        if contentOffset_y > tableViewContentSize - pagination_y {
+//
+//            print("123123")
+//        }
+        
+        let position = scrollView.contentOffset.y
+        if position > self.collectionView.contentSize.height - 100 - scrollView.frame.size.height {
+            
+            debugPrint("!2313")
         }
     }
 }

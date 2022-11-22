@@ -10,38 +10,8 @@ import RxSwift
 import RxCocoa
 import RxRelay
 
-class ProductViewModel  {
+protocol LikeViewModelOutputs {
     
-    let product: Product
-    
-    init(_ product: Product) {
-        self.product = product
-    }
-    
-    private let _fetch = PublishRelay<Void>()
-    func fetch() {
-        self._fetch.accept(())
-    }
-}
-
-extension ProductViewModel {
-    
-    var imageURL: Observable<String> {
-        return Observable<String>.just(product.imageURL)
-    }
-
-    var id: Observable<String> {
-        return Observable<Int>.just(product.id).map { "\($0)" }
-    }
-    
-    var title: Observable<String> {
-        return Observable<String>.just(product.name)
-    }
-    
-    var price: Observable<String> {
-        return Observable<Int>.just(product.price).map { "\($0)"}
-    }
-    
-    
+    var viewInfoChanged: Observable<HomeProductViewInfo> { get }
 }
 

@@ -22,6 +22,34 @@ struct HomeProductViewInfo {
     
     var isNew: Bool
     var sellCnt: Int
+    
+    init() {
+        
+        self.id = 0
+        self.name = ""
+        self.imageURL = ""
+        
+        self.actualPrice = 0
+        self.price = 0
+        
+        self.isNew = false
+        self.sellCnt = 0
+    }
+    
+    init(fetchResult: ProductResponse) {
+        
+        let result = fetchResult
+        
+        self.id = result.id
+        self.name = result.name
+        self.imageURL = result.imageURL
+        
+        self.actualPrice = result.actualPrice
+        self.price = result.price
+        
+        self.isNew = result.isNew
+        self.sellCnt = result.sellCnt
+    }
 }
 
 protocol HomeProductViewModelInputs {

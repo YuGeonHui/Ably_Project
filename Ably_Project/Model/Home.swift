@@ -1,16 +1,16 @@
 //
-//  Product.swift
+//  Banner.swift
 //  Ably_Project
 //
-//  Created by geonhui Yu on 2022/11/19.
+//  Created by geonhui Yu on 2022/11/20.
 //
 
 import Foundation
 
 struct HomeResponse: Codable {
     
-    let banners: [Banner]
-    let products: [Product]
+    let banners: [BannerResponse]
+    let products: [ProductResponse]
 }
 
 extension HomeResponse {
@@ -21,7 +21,21 @@ extension HomeResponse {
     }
 }
 
-struct Product: Codable {
+struct BannerResponse: Hashable, Codable {
+    
+    let id: Int // 배너 ID
+    let imageURL: String // 배너 화면에 보여질 이미지 url
+}
+
+extension BannerResponse {
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case imageURL = "image"
+    }
+}
+
+struct ProductResponse: Codable {
     
     let id: Int // 상품 ID
     let name: String // 상품 이름
@@ -34,7 +48,7 @@ struct Product: Codable {
     let sellCnt: Int // 구매중 갯수
 }
 
-extension Product {
+extension ProductResponse {
     
     enum CodingKeys: String, CodingKey {
         case id

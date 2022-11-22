@@ -15,7 +15,6 @@ struct HomeViewInfo {
     var productInfos: [HomeProductViewInfo] = []
     
     init() {
-        
         self.bannerInfos = []
         self.productInfos = []
     }
@@ -26,7 +25,7 @@ struct HomeViewInfo {
         
         self.bannerInfos = result.banners.map { HomeBannerViewInfo(id: $0.id, imageURL: $0.imageURL) }
         self.productInfos = result.products.map {
-            HomeProductViewInfo(id: $0.id, name: $0.name, imageURL: $0.imageURL, actualPrice: $0.actualPrice, price: $0.price, isNew: $0.isNew, sellCnt: $0.sellCnt)
+            HomeProductViewInfo(fetchResult: $0)
         }
     }
 }
@@ -34,11 +33,13 @@ struct HomeViewInfo {
 protocol HomeViewModelInputs {
     
     func fetch()
+    func fetchMoreInfo(_ lastId: Int)
 }
 
 protocol HomeViewModelOutputs {
     
     var viewInfoChanged: Observable<HomeViewInfo> { get }
+    var addProdcutInfoChanged: Observable<HomeProductViewInfo> { get }
 }
 
 class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs {
@@ -51,13 +52,23 @@ class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs {
         self._fetch.accept(())
     }
     
+    private let _fetchMoreInfo = PublishRelay<Int>()
+    func fetchMoreInfo(_ lastId: Int) {
+        self._fetchMoreInfo.accept(lastId)
+    }
+    
     // MARK: Value
     private let _viewInfo = BehaviorRelay<HomeViewInfo>(value: HomeViewInfo())
     var viewInfoChanged: Observable<HomeViewInfo>
     
+    private let _addProductInfo = BehaviorRelay<HomeProductViewInfo>(value: HomeProductViewInfo())
+    var addProdcutInfoChanged: Observable<HomeProductViewInfo>
+    
     init() {
         
         self.viewInfoChanged = _viewInfo.asObservable()
+        self.addProdcutInfoChanged = _addProductInfo.asObservable()
+        
         self.bind()
     }
     
@@ -67,11 +78,17 @@ class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs {
             .withUnretained(self)
             .bind(onNext: { $0.0.fetchInfos() })
             .disposed(by: self.disposeBag)
+        
+        self._fetchMoreInfo
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .bind(onNext: { $0.pagination($1) })
+            .disposed(by: self.disposeBag)
     }
     
     private func fetchInfos() {
         
-        let resource = Resource<HomeResponse>(url: URL(string: "https://d2bab9i9pr8lds.cloudfront.net/api/home")!)
+        let resource = Resource<HomeResponse>(url: URL(string: HomeAPI.initialization.url)!)
         
         URLRequest.load(resource: resource)
             .subscribe(onNext: { [weak self] response in
@@ -79,13 +96,31 @@ class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs {
                 let info = HomeViewInfo(fetchResult: response)
                 self?._viewInfo.accept(info)
                 
-                debugPrint("response: \(response)")
-                
             }, onError: { [weak self] err in
                 
                 debugPrint(err.localizedDescription)
                 let info = HomeViewInfo()
                 self?._viewInfo.accept(info)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func pagination(_ lastId: Int) {
+
+        let resource = Resource<ProductResponse>(url: URL(string: HomeAPI.pagination(lastId).url)!)
+        
+        URLRequest.load(resource: resource)
+            .subscribe(onNext: { [weak self] response in
+                                
+                let info = HomeProductViewInfo(fetchResult: response)
+                self?._addProductInfo.accept(info)
+                
+            }, onError: { [weak self] err in
+                
+                debugPrint(err.localizedDescription)
+                
+                let info = HomeProductViewInfo()
+                self?._addProductInfo.accept(info)
             })
             .disposed(by: disposeBag)
     }

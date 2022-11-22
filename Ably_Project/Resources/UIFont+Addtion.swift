@@ -16,4 +16,8 @@ extension UIFont {
     class var regular13: UIFont {
         return UIFont.systemFont(ofSize: 13, weight: .regular)
     }
+    
+    class var bold12: UIFont {
+        return UIFont.systemFont(ofSize: 12, weight: .bold)
+    }
 }

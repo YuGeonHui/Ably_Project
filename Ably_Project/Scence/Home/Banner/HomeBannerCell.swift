@@ -19,9 +19,16 @@ final class HomeBannerCell: UICollectionViewCell {
     let disposeBag = DisposeBag()
     static let identifier = "HomeBannerCell"
     
+    private enum Constants {
+        static let width = UIScreen.main.bounds.width
+        
+        static let height: CGFloat = 250
+        static let labelInset: Int = 20
+    }
+    
     private enum Styles {
         static let state: Style = Style {
-            $0.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+            $0.font = UIFont.bold12
             $0.color = UIColor.white
         }
     }
@@ -30,9 +37,7 @@ final class HomeBannerCell: UICollectionViewCell {
         $0.contentMode = .scaleToFill
     }
     lazy var stateLabel = UILabel().then {
-        $0.layer.cornerRadius = 4
         $0.clipsToBounds = true
-        $0.backgroundColor = .gray
     }
     
     override init(frame: CGRect) {
@@ -56,36 +61,20 @@ final class HomeBannerCell: UICollectionViewCell {
         
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.height.equalTo(250)
+            make.height.equalTo(Constants.height)
         }
         
         stateLabel.snp.makeConstraints { make in
-            make.bottom.right.equalToSuperview().inset(20)
+            make.bottom.right.equalToSuperview().inset(Constants.labelInset)
         }
     }
         
-    func configure(_ info: HomeBannerViewInfo) {
+    func configure(_ info: HomeBannerViewInfo, totalCount: Int) {
                 
         guard let url = URL(string: info.imageURL) else { return }
-        imageView.kf.setImage(with: url)
+        self.imageView.kf.setImage(with: url)
         
-        stateLabel.attributedText = "\(info.id) / 3".set(style: Styles.state)
+        self.stateLabel.attributedText = "\(info.id) / \(totalCount)".set(style: Styles.state)
     }
     
-    let uploadImageURL = PublishRelay<String>()
-    let uploadState = PublishRelay<String>()
-    
-    private func bindView() {
-        
-        self.uploadImageURL
-            .map { URL(string: $0) }
-            .withUnretained(self)
-            .bind(onNext: { $0.0.imageView.kf.setImage(with: $0.1) })
-            .disposed(by: self.disposeBag)
-        
-        self.uploadState
-            .withUnretained(self)
-            .bind(onNext: { $0.0.stateLabel.text = $0.1 })
-            .disposed(by: self.disposeBag)
-    }
 }

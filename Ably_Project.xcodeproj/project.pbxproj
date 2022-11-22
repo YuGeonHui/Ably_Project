@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8F700B9F0873CD3330BE4161 /* Pods_Ably_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD504BB20F87F03DF155553B /* Pods_Ably_Project.framework */; };
 		B62D41FA292A19CD000E56F6 /* URLRequest+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62D41F9292A19CD000E56F6 /* URLRequest+Ext.swift */; };
-		B63AE2A529293CAB0081C5F3 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63AE2A429293CAB0081C5F3 /* Banner.swift */; };
+		B63AE2A529293CAB0081C5F3 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63AE2A429293CAB0081C5F3 /* Home.swift */; };
 		B63AE2A729293D530081C5F3 /* HomeBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63AE2A629293D530081C5F3 /* HomeBannerCell.swift */; };
 		B63C9C9A292A01930037AFF9 /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C9C99292A01930037AFF9 /* LikeViewController.swift */; };
 		B63C9C9D292A09E40037AFF9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63C9C9C292A09E40037AFF9 /* MainViewController.swift */; };
@@ -18,19 +18,17 @@
 		B642E16E29291816007729A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642E16D29291816007729A2 /* SceneDelegate.swift */; };
 		B642E17529291817007729A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B642E17429291817007729A2 /* Assets.xcassets */; };
 		B642E17829291817007729A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B642E17629291817007729A2 /* LaunchScreen.storyboard */; };
-		B642E18729291C0B007729A2 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642E18629291C0B007729A2 /* Product.swift */; };
 		B642E18929291F89007729A2 /* HomeProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642E18829291F89007729A2 /* HomeProductCell.swift */; };
 		B6629C2B292A719200A28DEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6629C2A292A719200A28DEC /* HomeViewController.swift */; };
 		B696C5912929467D00B8A655 /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696C5902929467D00B8A655 /* LikeViewModel.swift */; };
 		B696C5932929468900B8A655 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696C5922929468900B8A655 /* HomeViewModel.swift */; };
-		B696C596292946C800B8A655 /* RxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696C595292946C800B8A655 /* RxViewModel.swift */; };
-		B696C59A2929CE5300B8A655 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696C5992929CE5300B8A655 /* TextViewController.swift */; };
 		B6C9229C292B856B0010D07B /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9229B292B856B0010D07B /* UIColor+Additions.swift */; };
 		B6C9229E292B865E0010D07B /* UIFont+Addtion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9229D292B865E0010D07B /* UIFont+Addtion.swift */; };
 		B6C922A1292B9D310010D07B /* HomeAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C922A0292B9D310010D07B /* HomeAPIWorker.swift */; };
 		B6C922A4292BA01D0010D07B /* HomeProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C922A3292BA01D0010D07B /* HomeProductViewModel.swift */; };
 		B6C922A6292BA37F0010D07B /* HomeBannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C922A5292BA37F0010D07B /* HomeBannerViewModel.swift */; };
 		B6C922A8292BA7F80010D07B /* HomeStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C922A7292BA7F80010D07B /* HomeStrings.swift */; };
+		B6F18A39292C8FD3009A290C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F18A38292C8FD3009A290C /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +36,7 @@
 		7D6021BDCA85A2D1F1C12C8B /* Pods-Ably_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ably_Project.release.xcconfig"; path = "Target Support Files/Pods-Ably_Project/Pods-Ably_Project.release.xcconfig"; sourceTree = "<group>"; };
 		AD504BB20F87F03DF155553B /* Pods_Ably_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ably_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62D41F9292A19CD000E56F6 /* URLRequest+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Ext.swift"; sourceTree = "<group>"; };
-		B63AE2A429293CAB0081C5F3 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		B63AE2A429293CAB0081C5F3 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		B63AE2A629293D530081C5F3 /* HomeBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerCell.swift; sourceTree = "<group>"; };
 		B63C9C99292A01930037AFF9 /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
 		B63C9C9C292A09E40037AFF9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -49,19 +47,17 @@
 		B642E17429291817007729A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B642E17729291817007729A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B642E17929291817007729A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B642E18629291C0B007729A2 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B642E18829291F89007729A2 /* HomeProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductCell.swift; sourceTree = "<group>"; };
 		B6629C2A292A719200A28DEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B696C5902929467D00B8A655 /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
 		B696C5922929468900B8A655 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		B696C595292946C800B8A655 /* RxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewModel.swift; sourceTree = "<group>"; };
-		B696C5992929CE5300B8A655 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		B6C9229B292B856B0010D07B /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		B6C9229D292B865E0010D07B /* UIFont+Addtion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Addtion.swift"; sourceTree = "<group>"; };
 		B6C922A0292B9D310010D07B /* HomeAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPIWorker.swift; sourceTree = "<group>"; };
 		B6C922A3292BA01D0010D07B /* HomeProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductViewModel.swift; sourceTree = "<group>"; };
 		B6C922A5292BA37F0010D07B /* HomeBannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerViewModel.swift; sourceTree = "<group>"; };
 		B6C922A7292BA7F80010D07B /* HomeStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStrings.swift; sourceTree = "<group>"; };
+		B6F18A38292C8FD3009A290C /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +136,7 @@
 		B642E16A29291816007729A2 /* Ably_Project */ = {
 			isa = PBXGroup;
 			children = (
+				B6F18A37292C8FA0009A290C /* Domain */,
 				B6C9229A292B83090010D07B /* Scence */,
 				B62D41F8292A19BC000E56F6 /* Extension */,
 				B6AE811B2929F35B00C799DD /* Model */,
@@ -148,7 +145,6 @@
 				B642E16B29291816007729A2 /* AppDelegate.swift */,
 				B642E16D29291816007729A2 /* SceneDelegate.swift */,
 				B642E17929291817007729A2 /* Info.plist */,
-				B696C5992929CE5300B8A655 /* TextViewController.swift */,
 			);
 			path = Ably_Project;
 			sourceTree = "<group>";
@@ -189,7 +185,6 @@
 		B696C594292946BE00B8A655 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				B696C595292946C800B8A655 /* RxViewModel.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -197,8 +192,7 @@
 		B6AE811B2929F35B00C799DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B63AE2A429293CAB0081C5F3 /* Banner.swift */,
-				B642E18629291C0B007729A2 /* Product.swift */,
+				B63AE2A429293CAB0081C5F3 /* Home.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,6 +214,14 @@
 				B642E18829291F89007729A2 /* HomeProductCell.swift */,
 			);
 			path = Product;
+			sourceTree = "<group>";
+		};
+		B6F18A37292C8FA0009A290C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B6F18A38292C8FD3009A290C /* Repository.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,18 +341,16 @@
 				B642E18929291F89007729A2 /* HomeProductCell.swift in Sources */,
 				B696C5932929468900B8A655 /* HomeViewModel.swift in Sources */,
 				B63AE2A729293D530081C5F3 /* HomeBannerCell.swift in Sources */,
-				B696C59A2929CE5300B8A655 /* TextViewController.swift in Sources */,
 				B642E16C29291816007729A2 /* AppDelegate.swift in Sources */,
 				B6C922A4292BA01D0010D07B /* HomeProductViewModel.swift in Sources */,
 				B642E16E29291816007729A2 /* SceneDelegate.swift in Sources */,
 				B63C9C9D292A09E40037AFF9 /* MainViewController.swift in Sources */,
 				B62D41FA292A19CD000E56F6 /* URLRequest+Ext.swift in Sources */,
 				B63C9C9A292A01930037AFF9 /* LikeViewController.swift in Sources */,
-				B63AE2A529293CAB0081C5F3 /* Banner.swift in Sources */,
-				B642E18729291C0B007729A2 /* Product.swift in Sources */,
-				B696C596292946C800B8A655 /* RxViewModel.swift in Sources */,
+				B63AE2A529293CAB0081C5F3 /* Home.swift in Sources */,
 				B696C5912929467D00B8A655 /* LikeViewModel.swift in Sources */,
 				B6C922A1292B9D310010D07B /* HomeAPIWorker.swift in Sources */,
+				B6F18A39292C8FD3009A290C /* Repository.swift in Sources */,
 				B6C922A6292BA37F0010D07B /* HomeBannerViewModel.swift in Sources */,
 				B6C922A8292BA7F80010D07B /* HomeStrings.swift in Sources */,
 				B6C9229E292B865E0010D07B /* UIFont+Addtion.swift in Sources */,
