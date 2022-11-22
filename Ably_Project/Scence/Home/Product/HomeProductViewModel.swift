@@ -13,14 +13,15 @@ import RxRelay
 // MARK: Product ViewModel
 struct HomeProductViewInfo {
     
-    var image: UIImage?
-    
-    var price: Int
-    var sale: String
+    var id: Int
     var name: String
+    var imageURL: String
     
-    var sellCnt: String
+    var actualPrice: Int
+    var price: Int
+    
     var isNew: Bool
+    var sellCnt: Int
 }
 
 protocol HomeProductViewModelInputs {
@@ -33,7 +34,9 @@ protocol HomeProductViewModelOutputs {
     var showProductInfo: Observable<HomeProductViewInfo> { get }
 }
 
-class HomeProductViewModel: RxViewModel, HomeProductViewModelInputs, HomeProductViewModelOutputs {
+class HomeProductViewModel: HomeProductViewModelInputs, HomeProductViewModelOutputs {
+    
+    let disposeBag = DisposeBag()
     
     private var _heartTapped = PublishRelay<Void>()
     func heartTapped() {
@@ -46,9 +49,10 @@ class HomeProductViewModel: RxViewModel, HomeProductViewModelInputs, HomeProduct
     init(with viewInfo: HomeProductViewInfo) {
         
         self.showProductInfo = self._showProductInfo.asObservable()
+        self.bind()
     }
     
-    override func bind() {
+    func bind() {
         
     }
 }

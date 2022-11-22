@@ -46,15 +46,73 @@ final class HomeViewController: UIViewController {
         view.register(HomeBannerCell.self, forCellWithReuseIdentifier: "HomeBannerCell")
         view.register(HomeProductCell.self, forCellWithReuseIdentifier: "HomeProductCell")
        
-        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private var viewModel: HomeViewModel!
-  
-//    private let dataSource: [MySection] = [.first(Banner.list), .second(Product.list)]
-
+    // MARK: ViewModel
+    private var viewModel = HomeViewModel()
+    
     fileprivate var dataSource: [Section] = [.first(Banner.list), .second(Product.list)]
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        self.view.addSubview(self.collectionView)
+        self.title = Main.TabItem.home.title
+        
+        self.collectionView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        self.collectionView.dataSource = self
+        self.bindView()
+    }
+    
+    private func bindView() {
+        
+        self.bindInputs(self.viewModel)
+        self.bindOutputs(self.viewModel)
+    }
+    
+    private func bindInputs(_ inputs: HomeViewModelInputs) {
+        inputs.fetch()
+    }
+    
+    private func bindOutputs(_ outputs: HomeViewModelOutputs) {
+        
+        outputs.viewInfoChanged
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind(onNext: { $0.updateView(with: $1) })
+            .disposed(by: self.disposeBag)
+    }
+}
+
+// MARK: Extensions of updates
+fileprivate extension HomeViewController {
+    
+    private func updateView(with viewInfo: HomeViewInfo) {
+        
+//        bannerInfo = viewInfo.bannerInfos.map { HomeBannerViewInfo(id: <#T##Int#>)}
+//
+//        self.updateBanners(with: viewInfo.bannerInfos)
+//        self.updateProducts(with: viewInfo.productInfos)
+    }
+    
+    private func updateBanners(with viewInfo: HomeBannerViewInfo) {
+        
+    }
+    
+    private func updateProducts(with viewInfo: HomeProductViewInfo) {
+        
+        
+    }
+}
+
+// MARK: Extensions of Layout
+extension HomeViewController {
     
     static func getLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
@@ -103,50 +161,9 @@ final class HomeViewController: UIViewController {
             }
         }
     }
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        self.view.addSubview(self.collectionView)
-        self.title = "홈" 
-        
-        self.collectionView.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide)
-            make.leading.trailing.bottom.equalToSuperview()
-        }
-        
-        self.collectionView.dataSource = self
-        self.getFetchInfo()
-    }
 }
 
-extension HomeViewController {
-    
-    private func getFetchInfo() {
-        
-        let resource = Resource<HomeResponse>(url: URL(string: "https://d2bab9i9pr8lds.cloudfront.net/api/home")!)
-        
-        URLRequest.load(resource: resource)
-            .subscribe(onNext: { response in
-                
-                self.dataSource = [.first(response.banners), .second(response.products)]
-                
-//                let banners = response.banners
-//                let products = response.products
-//                self.viewModel = HomeViewModel(banners, products: products)
-//
-//                debugPrint("12312: \(banners)")
-//                debugPrint("12312: \(products)")
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                
-            }).disposed(by: disposeBag)
-    }
-}
-
-// MARK: Delegate
+// MARK: Extensions of Delegate
 extension HomeViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -181,15 +198,3 @@ extension HomeViewController: UICollectionViewDataSource {
         }
     }
 }
-
-// let bannerVM = self.viewModel.bannerAt(indexPath.row)
-//
-//        bannerVM.imageURL
-//            .withUnretained(self)
-//            .bind(onNext: { cell.uploadImageURL.accept($0.1) })
-//            .disposed(by: self.disposeBag)
-//
-//        bannerVM.id
-//            .withUnretained(self)
-//            .bind(onNext: { cell.uploadState.accept($0.1) })
-//            .disposed(by: self.disposeBag)
