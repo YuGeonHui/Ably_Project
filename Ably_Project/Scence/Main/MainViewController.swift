@@ -29,5 +29,6 @@ final class MainViewController: UITabBarController {
         
         self.setViewControllers([homeTab, likeTab], animated: false)
         self.tabBar.tintColor = .red
+        self.view.backgroundColor = .white
     }
 }

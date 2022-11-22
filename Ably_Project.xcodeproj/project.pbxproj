@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8F700B9F0873CD3330BE4161 /* Pods_Ably_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD504BB20F87F03DF155553B /* Pods_Ably_Project.framework */; };
+		B60061D1292CF3F700DFFF6B /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60061D0292CF3F700DFFF6B /* PaddingLabel.swift */; };
 		B62D41FA292A19CD000E56F6 /* URLRequest+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62D41F9292A19CD000E56F6 /* URLRequest+Ext.swift */; };
 		B63AE2A529293CAB0081C5F3 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63AE2A429293CAB0081C5F3 /* Home.swift */; };
 		B63AE2A729293D530081C5F3 /* HomeBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63AE2A629293D530081C5F3 /* HomeBannerCell.swift */; };
@@ -35,6 +36,7 @@
 		2F1FF153E03B667F95F826A6 /* Pods-Ably_Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ably_Project.debug.xcconfig"; path = "Target Support Files/Pods-Ably_Project/Pods-Ably_Project.debug.xcconfig"; sourceTree = "<group>"; };
 		7D6021BDCA85A2D1F1C12C8B /* Pods-Ably_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ably_Project.release.xcconfig"; path = "Target Support Files/Pods-Ably_Project/Pods-Ably_Project.release.xcconfig"; sourceTree = "<group>"; };
 		AD504BB20F87F03DF155553B /* Pods_Ably_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ably_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B60061D0292CF3F700DFFF6B /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		B62D41F9292A19CD000E56F6 /* URLRequest+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Ext.swift"; sourceTree = "<group>"; };
 		B63AE2A429293CAB0081C5F3 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		B63AE2A629293D530081C5F3 /* HomeBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerCell.swift; sourceTree = "<group>"; };
@@ -87,6 +89,14 @@
 				AD504BB20F87F03DF155553B /* Pods_Ably_Project.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B60061CF292CF3DD00DFFF6B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B60061D0292CF3F700DFFF6B /* PaddingLabel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		B62D41F8292A19BC000E56F6 /* Extension */ = {
@@ -152,8 +162,8 @@
 		B642E17F29291933007729A2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B6C922A2292BA0090010D07B /* Product */,
 				B63AE2A329293C9D0081C5F3 /* Banner */,
+				B6C922A2292BA0090010D07B /* Product */,
 				B6629C2A292A719200A28DEC /* HomeViewController.swift */,
 				B696C5922929468900B8A655 /* HomeViewModel.swift */,
 				B6C922A0292B9D310010D07B /* HomeAPIWorker.swift */,
@@ -200,6 +210,7 @@
 		B6C9229A292B83090010D07B /* Scence */ = {
 			isa = PBXGroup;
 			children = (
+				B60061CF292CF3DD00DFFF6B /* Common */,
 				B642E17F29291933007729A2 /* Home */,
 				B642E1802929193B007729A2 /* Like */,
 				B63C9C9B292A09BC0037AFF9 /* Main */,
@@ -354,6 +365,7 @@
 				B6C922A6292BA37F0010D07B /* HomeBannerViewModel.swift in Sources */,
 				B6C922A8292BA7F80010D07B /* HomeStrings.swift in Sources */,
 				B6C9229E292B865E0010D07B /* UIFont+Addtion.swift in Sources */,
+				B60061D1292CF3F700DFFF6B /* PaddingLabel.swift in Sources */,
 				B6629C2B292A719200A28DEC /* HomeViewController.swift in Sources */,
 				B63C9C9F292A09EB0037AFF9 /* MainViewModel.swift in Sources */,
 				B6C9229C292B856B0010D07B /* UIColor+Additions.swift in Sources */,

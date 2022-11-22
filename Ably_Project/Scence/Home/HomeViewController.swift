@@ -205,20 +205,13 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-//        let contentOffset_y = scrollView.contentOffset.y
-//        let tableViewContentSize = self.collectionView.contentSize.height
-//        let pagination_y = tableViewContentSize * 0.2
-//
-//        if contentOffset_y > tableViewContentSize - pagination_y {
-//
-//            print("123123")
-//        }
-        
+                
         let position = scrollView.contentOffset.y
         if position > self.collectionView.contentSize.height - 100 - scrollView.frame.size.height {
             
-            debugPrint("!2313")
+//            self.dataSource = [.banner(<#T##[HomeBannerViewInfo]#>)]
+            
+            debugPrint("!2313: \(self.dataSource.count)")
         }
-    }
+    }   
 }

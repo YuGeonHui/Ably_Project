@@ -11,6 +11,7 @@ target 'Ably_Project' do
     pod 'Then'
     pod 'Kingfisher', '~> 7.0'
     pod 'SwiftRichString'
+    pod 'RxGesture'
   # Pods for Ably_Project
 
 end

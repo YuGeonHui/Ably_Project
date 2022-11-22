@@ -23,12 +23,14 @@ final class HomeBannerCell: UICollectionViewCell {
         static let width = UIScreen.main.bounds.width
         
         static let height: CGFloat = 250
+        
+        static let labelRadius: CGFloat = 10
         static let labelInset: Int = 20
     }
     
     private enum Styles {
         static let state: Style = Style {
-            $0.font = UIFont.bold12
+            $0.font = UIFont.regular12
             $0.color = UIColor.white
         }
     }
@@ -36,8 +38,10 @@ final class HomeBannerCell: UICollectionViewCell {
     private lazy var imageView = UIImageView().then {
         $0.contentMode = .scaleToFill
     }
-    lazy var stateLabel = UILabel().then {
+    private lazy var stateLabel = PaddingLabel().then {
         $0.clipsToBounds = true
+        $0.layer.cornerRadius = Constants.labelRadius
+        $0.backgroundColor = .systemGray2
     }
     
     override init(frame: CGRect) {
@@ -53,7 +57,7 @@ final class HomeBannerCell: UICollectionViewCell {
     private func settingCell() {
         
         self.addSubview(self.imageView)
-        imageView.addSubview(self.stateLabel)
+        self.addSubview(self.stateLabel)
         
         snp.makeConstraints { make in
             make.width.equalTo(Constants.width)
@@ -75,6 +79,7 @@ final class HomeBannerCell: UICollectionViewCell {
         self.imageView.kf.setImage(with: url)
         
         self.stateLabel.attributedText = "\(info.id) / \(totalCount)".set(style: Styles.state)
+        self.stateLabel.invalidateIntrinsicContentSize()
     }
     
 }
