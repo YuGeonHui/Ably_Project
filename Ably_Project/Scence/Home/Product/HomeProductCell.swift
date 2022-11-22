@@ -130,7 +130,7 @@ final class HomeProductCell: UICollectionViewCell {
         }
     }
     
-    func configure(_ info: Product) {
+    func configure(_ info: HomeProductViewInfo) {
         
         let saleRatio = info.price * 100 / info.actualPrice
         

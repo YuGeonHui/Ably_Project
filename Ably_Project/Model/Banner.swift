@@ -20,14 +20,3 @@ extension Banner {
         case imageURL = "image"
     }
 }
-
-// MARK: Mock Data
-extension Banner {
-    
-    static let list: [Banner] = [
-    
-        Banner(id: 1, imageURL: "https://img.a-bly.com/banner/images/banner_image_1615465448476691.jpg"),
-        Banner(id: 2, imageURL: "https://img.a-bly.com/banner/images/banner_image_1615970086333899.jpg"),
-        Banner(id: 3, imageURL: "https://img.a-bly.com/banner/images/banner_image_1615962899391279.jpg")
-    ]
-}

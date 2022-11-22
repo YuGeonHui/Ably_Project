@@ -64,7 +64,7 @@ final class HomeBannerCell: UICollectionViewCell {
         }
     }
         
-    func configure(_ info: Banner) {
+    func configure(_ info: HomeBannerViewInfo) {
                 
         guard let url = URL(string: info.imageURL) else { return }
         imageView.kf.setImage(with: url)

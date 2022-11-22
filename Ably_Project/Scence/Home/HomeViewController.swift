@@ -11,22 +11,14 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-//enum MySection {
-//    case first([Banner])
-//    case second([Product])
-//}
-
 fileprivate enum Section {
-    case first([Banner])
-    case second([Product])
+    case banner([HomeBannerViewInfo])
+    case product([HomeProductViewInfo])
 }
 
 final class HomeViewController: UIViewController {
     
     let disposeBag = DisposeBag()
-    
-    let bannerInfos: [Banner] = Banner.list
-    let productInfo: [Product] = Product.list
     
     private lazy var collectionView: UICollectionView = {
         
@@ -46,14 +38,13 @@ final class HomeViewController: UIViewController {
         view.register(HomeBannerCell.self, forCellWithReuseIdentifier: "HomeBannerCell")
         view.register(HomeProductCell.self, forCellWithReuseIdentifier: "HomeProductCell")
        
-//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     // MARK: ViewModel
     private var viewModel = HomeViewModel()
     
-    fileprivate var dataSource: [Section] = [.first(Banner.list), .second(Product.list)]
+    fileprivate var dataSource: [Section]!
     
     override func viewDidLoad() {
         
@@ -95,19 +86,14 @@ fileprivate extension HomeViewController {
     
     private func updateView(with viewInfo: HomeViewInfo) {
         
-//        bannerInfo = viewInfo.bannerInfos.map { HomeBannerViewInfo(id: <#T##Int#>)}
-//
-//        self.updateBanners(with: viewInfo.bannerInfos)
-//        self.updateProducts(with: viewInfo.productInfos)
-    }
-    
-    private func updateBanners(with viewInfo: HomeBannerViewInfo) {
+        let bannerInfo = viewInfo.bannerInfos
+        let productInfo = viewInfo.productInfos
         
-    }
-    
-    private func updateProducts(with viewInfo: HomeProductViewInfo) {
+        self.dataSource = [.banner(bannerInfo), .product(productInfo)]
         
-        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
 }
 
@@ -167,15 +153,15 @@ extension HomeViewController {
 extension HomeViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
         return self.dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch self.dataSource[section] {
-        case let .first(items):
+            
+        case let .banner(items):
             return items.count
-        case let .second(items):
+        case let .product(items):
             return items.count
         }
     }
@@ -186,12 +172,12 @@ extension HomeViewController: UICollectionViewDataSource {
         let productCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeProductCell", for: indexPath) as! HomeProductCell
         
         switch self.dataSource[indexPath.section] {
-        case let .first(items):
+        case let .banner(items):
             
             bannerCell.configure(items[indexPath.item])
             return bannerCell
             
-        case let .second(items):
+        case let .product(items):
 
             productCell.configure(items[indexPath.item])
             return productCell

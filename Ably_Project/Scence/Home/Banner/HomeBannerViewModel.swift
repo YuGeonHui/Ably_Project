@@ -23,7 +23,7 @@ protocol HomeBannerViewOutputs {
     var imageURL: Observable<String?> { get }
 }
 
-class HomeBannerViewModel: RxViewModel, HomeBannerViewOutputs  {
+class HomeBannerViewModel: HomeBannerViewOutputs  {
     
     // MARK: OutPuuts
     var id: Observable<Int>
@@ -38,9 +38,9 @@ class HomeBannerViewModel: RxViewModel, HomeBannerViewOutputs  {
         
         self.id = self._viewInfo.map { $0.id }.asObservable()
         self.imageURL = self._viewInfo.map { $0.imageURL }.asObservable()
+        
+        self.bind()
     }
     
-    override func bind() {
-        
-    }
+    private func bind() {}
 }
