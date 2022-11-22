@@ -45,6 +45,9 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate {
     private var viewModel = HomeViewModel()
     fileprivate var dataSource: [Section]!
     
+    // MARK: Refresh
+    let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -52,6 +55,9 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate {
     
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        
+        self.refreshControl.endRefreshing()
+        self.collectionView.refreshControl = refreshControl
         
         self.settingView()
         self.bindView()
@@ -71,6 +77,19 @@ final class HomeViewController: UIViewController, UICollectionViewDelegate {
         
         self.bindInputs(self.viewModel)
         self.bindOutputs(self.viewModel)
+        
+        self.refreshControl.rx.controlEvent(.valueChanged)
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .bind(onNext: { [weak self] _ in
+
+                self?.viewModel.fetch()
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                    self?.refreshControl.endRefreshing()
+                }
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func bindInputs(_ inputs: HomeViewModelInputs) {
